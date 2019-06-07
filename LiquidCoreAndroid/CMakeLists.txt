@@ -81,7 +81,6 @@ elseif(${ANDROID_ABI} STREQUAL arm64-v8a)
     SET( ARCH_SIZE "64bit" )
 endif()
 
-if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
 set_target_properties(
              # Specifies the target library.
              node
@@ -90,18 +89,9 @@ set_target_properties(
              PROPERTIES IMPORTED_LOCATION
 
              # Provides the path to the library you want to import.
-             ${PROJECT_SOURCE_DIR}/../deps/node-8.9.3/prebuilt/${ARCH_SIZE}/symbols/${ANDROID_ABI}/libnode.so )
-else()
-set_target_properties(
-             # Specifies the target library.
-             node
+             ${CMAKE_CURRENT_SOURCE_DIR}/../deps/node-8.9.3/prebuilt/${ARCH_SIZE}/symbols/${ANDROID_ABI}/libnode.so )
 
-             # Specifies the parameter you want to define.
-             PROPERTIES IMPORTED_LOCATION
-
-             # Provides the path to the library you want to import.
-             ${PROJECT_SOURCE_DIR}/../deps/node-8.9.3/prebuilt/${ARCH_SIZE}/nosymbols/${ANDROID_ABI}/libnode.so )
-endif()
+target_link_libraries(liquidcore v)
 
 include_directories(
              src/main/cpp
@@ -118,13 +108,6 @@ include_directories(
              src/../../LiquidCoreCommon/node
              src/../../LiquidCoreCommon/include
              )
-
-find_library( # Sets the name of the path variable.
-              log-lib
-
-              # Specifies the name of the NDK library that
-              # you want CMake to locate.
-              log )
 
 unset(DEFS_RELEASE)
 unset(CFLAGS_RELEASE)

@@ -342,8 +342,7 @@ public class Process {
                     });
 
                     // Expose LiquidCore version
-                    ctx.evaluateScript("global.process.versions.liquidcore = '" +
-                            BuildConfig.VERSION_NAME + "'");
+                    ctx.evaluateScript("global.process.versions.liquidcore = '1.0'");
 
                     // Ready to start
                     eventOnStart(ctx);

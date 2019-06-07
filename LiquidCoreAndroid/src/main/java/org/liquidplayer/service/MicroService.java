@@ -630,7 +630,7 @@ public class MicroService implements Process.EventListener {
                         sdf.format(new Date(lastModified)) + " GMT");
             }
             connection.setRequestProperty("Accept-Encoding", "gzip");
-            String version = org.liquidplayer.node.BuildConfig.VERSION_NAME;
+            String version = "1.0";
             String info = "Android; API " + Build.VERSION.SDK_INT;
             String userAgent = "LiquidCore/" + version + " (" + info + ")";
             android.util.Log.d("MicroService", "User-Agent : " + userAgent);

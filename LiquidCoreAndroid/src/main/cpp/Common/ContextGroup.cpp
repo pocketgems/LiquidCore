@@ -14,6 +14,8 @@
 #include "Common/JSValue.h"
 #include "Macros.h"
 
+extern "C" void *__dso_handle = &__dso_handle;
+
 class GenericAllocator : public ArrayBuffer::Allocator {
 public:
     GenericAllocator() = default;
